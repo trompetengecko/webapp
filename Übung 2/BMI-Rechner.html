@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>BMI-Rechner</title>
+</head>
+
+<body>
+    <div>
+        <h1>BMI-Rechner</h1>
+    </div>
+    <!-- <form action="" methode="get"> -->
+    <form action="https://vulcan.informatik.hs-fulda.de/bmi_berechnen.php" method="get">
+        <fieldset id="upperFieldset">
+            <legend id="upperLegend">Angaben zur BMI-Berechnung</legend>
+            <div class="divWrapper">
+                <div class="getTogether" id="leftDiv1">
+                    <p class="textP">Gewicht (kg) </p>
+                </div>
+                <div class="getTogether" id="rightDiv1">
+                    <input type="number" name="gewicht" step=".01" required id="weight">
+                </div>
+            </div>
+            <div class="divWrapper">
+                <div class="getTogether" id="leftDiv2">
+                    <p class="textP">Größe (m) </p>
+                </div>
+                <div class="getTogether" id="rightDiv2">
+                <input type="number" name="groesse" step=".01" required id="height">
+            </div>
+            </div>
+            <div>
+                <fieldset id="genderFieldset">
+                    <legend>Geschlecht</legend>
+                    <p>
+                        <input type="radio" name="geschlecht" id="maennlich">Männlich
+                        <input type="radio" name="geschlecht" id="weiblich">Weiblich
+                        <input type="radio" name="geschlecht" id="weiblich">Sonstiges
+                    </p>
+                </fieldset>
+            </div>
+            <div class="buttonDiv">
+                <input type="submit" value="Absenden">
+                <input type="reset" value="Zurücksetzen">
+            </div>
+
+    </form>
+    <div>
+        <form action="" method="get">
+            <div class="divWrapper">
+                <div class="getTogether" id="leftDiv3">
+                    <p class="textP">Email:</p>
+                </div>
+                <div class="getTogether" id="rightDiv3">
+                    <input type="email" name="email" required id="email">
+                </div>
+            </div>
+            <div class="divWrapper">
+                <div class="getTogether" id="leftDiv4">
+                    <p class="textP">Password:</p>
+                </div>
+                <div class="getTogether" id="rightDiv4">
+                    <input type="password" name="password" required id="password">
+                </div>
+            </div>
+            <div class="buttonDiv">
+                <input type="submit" value="Login">
+                <input type="reset" name="reset" id="">
+            </div>
+        </form>
+        </fieldset>
+        <p>Ihr Body Mass Index beträgt:
+            <!-- -->
+        </p>
+    </div>
+</body>
+
+</html>
