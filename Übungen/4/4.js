@@ -43,3 +43,40 @@ function greossteZahl(arr) {
 
 document.writeln("<br>")
 document.writeln(greossteZahl(newRandArray))
+
+function arrayIncrement(x, index, array) {
+    array[index] = x + 1;
+}
+
+function twoDArray(arr) {
+    arr.forEach((data) => {
+        data.forEach(arrayIncrement)
+        }    
+    )
+}
+
+let testArray = [
+    [0, 1],
+    [2, 3, 4],
+    [5, 6, 7, 8]
+];
+
+document.writeln("<br>")
+document.writeln(testArray[0][1]+"<br>")
+
+document.writeln("<br>")
+testArray.forEach(x => document.writeln(x+"<br>"))
+
+twoDArray(testArray)
+
+document.writeln("<br>")
+testArray.forEach(x => document.writeln(x+"<br>"))
+
+document.writeln("<br>")
+testArray.forEach((x) => {
+        x.forEach(y => {
+            document.writeln(y+"<br>")
+            }   
+        )
+    }
+)
