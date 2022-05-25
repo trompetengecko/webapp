@@ -1,0 +1,14 @@
+table {
+    border: solid;;
+}
+
+td {
+    border: solid;
+}
+.allMemRow0 {
+    background-color: rgb(8, 115, 209);
+}
+
+.allMemRow1 {
+    background-color: aqua;
+}
