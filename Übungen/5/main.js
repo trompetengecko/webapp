@@ -25,31 +25,37 @@ let mitglieder = [
 let indexMem = 0;
 
 //zur Darstellung der einzelnen Mitglieder (nicht für die aufgabe relevant)
-function showCurrentMember(x) {
+function showCurrentMember() {
     document.getElementById("showMem").innerHTML = `
     <p>Member Index: ${indexMem}</p>
-    <p>${mitglieder[x].name}</p>
-    <p>${mitglieder[x].vorname}</p>
-    <p>${mitglieder[x].email}</p>
+    <p>${mitglieder[indexMem].name}</p>
+    <p>${mitglieder[indexMem].vorname}</p>
+    <p>${mitglieder[indexMem].email}</p>
     `;
 }
 
+//indexMem wird inkrementiert und falls indexMem GE der Array Länge ist, wird indexMem auf 0 gesetzt, um das Array wieder von Beginn zu durchlaufen
 document.getElementById("showNextMemBtn").addEventListener("click", function () {
     indexMem++;
     if (indexMem >= mitglieder.length) {
         indexMem = 0;
     }
-    showCurrentMember(indexMem);
+    console.log("Show Member from Array with Index: " + indexMem);
+    showCurrentMember();
 });
 
+
+//analog zu vorher. Jedoch wird dekrementiert und falls der wert kleiner 0 ist mit dem letzten Element des Arrays fortgesetzt.
 document.getElementById("showPrevMemBtn").addEventListener("click", function () {
     indexMem--;
     if (indexMem < 0) {
         indexMem = mitglieder.length - 1;
     }
-    showCurrentMember(indexMem);
+    console.log("Show Member from Array with Index: " + indexMem);
+    showCurrentMember();
 });
 
+//Ab hier gehts mit 3.a los
 //Die dynamische Darstellung erfolgt indem ein String durch einen foreach Loop des Arrays die Mitglieder Informationen und html Elemente angefügt werden.
 allMemString = `<tr class="allMemRow1">
 <td><p>Name</p></td>
@@ -58,8 +64,8 @@ allMemString = `<tr class="allMemRow1">
 <td><p>Gruppe</p></td>
 </tr>`;
 
-//wird in dem erwähnten foreach Loop aufgerufen Backtick `` Schreibweise um Variablen im String aufrufen zu können
-//für die css darstellung wird durch die Modolo Operation die Klasse der einzelnen rows berechnet, sodass "allMemRow0" und "allMemRow1" existieren.
+//wird in dem erwähnten foreach Loop aufgerufen. Backtick `` Schreibweise um Variablen im String einfügen zu können
+//für die css darstellung wird durch die Modulo Operation die Klasse der einzelnen rows berechnet, sodass "allMemRow0" und "allMemRow1" existieren.
 function showAllMem(x, index, array) {
     allMemString = allMemString + `
         <tr class="allMemRow${index % 2}">
@@ -81,6 +87,7 @@ function showAllMem(x, index, array) {
 }
 
 document.getElementById("showAllMemBtn").addEventListener("click", function () {
+    console.log("Created a Table with every Member");
     //foreach Loop des arrays
     mitglieder.forEach(showAllMem)
     //einfügen des Strings auf der HTML Seite
