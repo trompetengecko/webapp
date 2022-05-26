@@ -64,7 +64,7 @@ allMemString = `<tr class="allMemRow1">
 <td><p>Gruppe</p></td>
 </tr>`;
 
-//wird in dem erwähnten foreach Loop aufgerufen. Backtick `` Schreibweise um Variablen im String einfügen zu können
+//wird in dem erwähnten foreach Loop aufgerufen.
 //für die css darstellung wird durch die Modulo Operation die Klasse der einzelnen rows berechnet, sodass "allMemRow0" und "allMemRow1" existieren.
 function showAllMem(x, index, array) {
     allMemString = allMemString + `
@@ -79,8 +79,8 @@ function showAllMem(x, index, array) {
                 <p>${mitglieder[index].email}</p>
             </td>
             <td>
-                <input class="addBtn" id="addMemBtn[${[index]}]" type="button" value="Add">
-                <input class="rmBtn" id="rmMemBtn[${[index]}]" type="button" value="Remove">
+                <input class="addBtn" id="addMemBtn[${index}]" type="button" value="Add">
+                <input class="rmBtn" id="rmMemBtn[${index}]" type="button" value="Remove">
             </td>
         <tr>
     `;
