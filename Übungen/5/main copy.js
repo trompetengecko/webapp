@@ -60,6 +60,7 @@ allMemString = `<tr class="allMemRow1">
 
 //wird in dem erwähnten foreach Loop aufgerufen Backtick `` Schreibweise um Variablen im String aufrufen zu können
 //für die css darstellung wird durch die Modolo Operation die Klasse der einzelnen rows berechnet, sodass "allMemRow0" und "allMemRow1" existieren.
+//zum differenzieren der einzelnen Buttons wird der Index der einzelnen Array Einträge beigefügt. Dies dient später dazu die entsprechenden Einträge gezielt hinzuzufügen / zu löschen
 function showAllMem(x, index, array) {
     allMemString = allMemString + `
         <tr class="allMemRow${index % 2}">
@@ -73,8 +74,8 @@ function showAllMem(x, index, array) {
                 <p>${mitglieder[index].email}</p>
             </td>
             <td>
-                <input class="addBtn" id="addMemBtn[${[index]}]" type="button" value="Add">
-                <input class="rmBtn" id="rmMemBtn[${[index]}]" type="button" value="Remove">
+                <input class="addBtn" id="addMemBtn[${[index]}]" type="button" name="${index}" value="Add" onclick="addToList(${index})">
+                <input class="rmBtn" id="rmMemBtn[${[index]}]" type="button" name="${index}" value="Remove" onclick="removeFromList(${index})">
             </td>
         <tr>
     `;
@@ -87,37 +88,30 @@ document.getElementById("showAllMemBtn").addEventListener("click", function () {
     document.getElementById("showAllMem").innerHTML = allMemString;
     //entfernen des Buttons
     document.getElementById("showAllMemBtn").remove();
-
-    //Event Listener an die dynamisch erstellten Buttons anhängen
-    const addBtn = document.querySelectorAll(".addBtn");
-    for (let i = 0; i < addBtn.length; i++) {
-        addBtn[i].addEventListener("click", function() {
-            console.log("Added Index: " + i);
-            addToList(i);
-        });
-    }
-
-    const rmBtn = document.querySelectorAll(".rmBtn");
-    for (let i = 0; i < rmBtn.length; i++) {
-        rmBtn[i].addEventListener("click", function() {
-            console.log("Removed Index: " + i);
-            removeFromList(i);
-        });
-    }
 });
+
+
+var elements = document.getElementsByClassName("classname");
+
+var myFunction = function() {
+    var attribute = this.getAttribute("data-myattribute");
+    alert(attribute);
+};
+
+for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', myFunction, false);
+}
+
 
 
 function addToList(index) {
     var myElem = document.getElementById(`participant${index}`);
     if (myElem === null) {
-        document.getElementById("participants").innerHTML += `<li id="participant${index}">${mitglieder[index].name} ${mitglieder[index].vorname}</li>`;
+        document.getElementById("participants").innerHTML += `<ul id="participant${index}">${mitglieder[index].name} ${mitglieder[index].vorname}</ul>`;
     }
 
 }
 
 function removeFromList(index) {
-    var myElem = document.getElementById(`participant${index}`);
-    if (myElem !== null) {
-        document.getElementById(`participant${index}`).remove();
-    }
+    document.getElementById(`participant${index}`).remove();
 }
