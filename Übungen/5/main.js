@@ -91,7 +91,7 @@ document.getElementById("showAllMemBtn").addEventListener("click", function () {
     //Event Listener an die dynamisch erstellten Buttons anhängen
     const addBtn = document.querySelectorAll(".addBtn");
     for (let i = 0; i < addBtn.length; i++) {
-        addBtn[i].addEventListener("click", function() {
+        addBtn[i].addEventListener("click", function () {
             console.log("Added Index: " + i);
             addToList(i);
         });
@@ -99,7 +99,7 @@ document.getElementById("showAllMemBtn").addEventListener("click", function () {
 
     const rmBtn = document.querySelectorAll(".rmBtn");
     for (let i = 0; i < rmBtn.length; i++) {
-        rmBtn[i].addEventListener("click", function() {
+        rmBtn[i].addEventListener("click", function () {
             console.log("Removed Index: " + i);
             removeFromList(i);
         });
