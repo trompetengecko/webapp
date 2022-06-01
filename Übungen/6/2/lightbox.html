@@ -1,0 +1,40 @@
+<body>
+    <img class="thumb" src="https://static-b.imgix.net/starfish.png?w=100&h=100"
+        data-src="https://static-b.imgix.net/starfish.png?w=500&h=500" value="https://static-b.imgix.net/starfish.png?">
+    <img class="thumb" src="https://assets.imgix.net/unsplash/goldengate.jpg?h=100&max-w=100"
+        data-src="https://assets.imgix.net/unsplash/goldengate.jpg?w=500&h=500"
+        value="https://assets.imgix.net/unsplash/goldengate.jpg?">
+
+    <div id="lightbox" class="hide">
+
+        <a id="close" href="#"></a>
+        <div id="targetImage"></div>
+    </div>
+    <script>
+        "use strict";
+
+        const picture = document.querySelectorAll(".thumb");
+        for (let i = 0; i < picture.length; i++) {
+            picture[i].addEventListener("click", function () {
+                let src = picture[i].getAttribute("value");
+                let w = 2000;
+                let h = 2000;
+                document.getElementById("targetImage").innerHTML = `
+                    <img id="lightBoxPic" src="${src}w=${w}&h=${h}">
+                `;
+                document.getElementById("close").innerHTML = `
+                    <button id="closeBtn">X</button>
+                `;
+                document.getElementById("close").position="absolute"
+                console.log("pic " + src);
+            });
+        }
+
+        let closeX = document.getElementById("close");
+        closeX.addEventListener("click", function () {
+            document.getElementById("lightBoxPic").remove();
+            document.getElementById("closeBtn").remove();
+
+        });
+    </script>
+</body>

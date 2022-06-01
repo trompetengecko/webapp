@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <style>
+        #myDiv {
+            position: absolute;
+            z-index: 1;
+            min-width: 150px;
+            min-height: 80px;
+            left: 50px;
+            top: 50px;
+            background-color: #e7a864;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="schiebbar" id="myDiv">
+    </div>
+
+    <script>
+        "use strict";
+
+        var elem = document.getElementById("myDiv");
+        var dragging = false;
+        var lastX, lastY;
+        elem.addEventListener("mousedown", function (evt) {
+            dragging = true;
+            lastX = evt.clientX;
+            lastY = evt.clientY;
+            console.log("mousedown");
+        }, false);
+        elem.addEventListener("mousemove", function (evt) {
+            if (dragging) {
+                var style = window.getComputedStyle(elem, null);
+                var posx = parseInt(style.getPropertyValue("left"));
+                var posy = parseInt(style.getPropertyValue("top"));
+                var x = evt.clientX;
+                var y = evt.clientY;
+                let dx = x - lastX;
+                let dy = y - lastY;
+                elem.style.left = (posx + dx) + "px";
+                elem.style.top = (posy + dy) + "px";
+                lastX = x;
+                lastY = y;
+                console.log("mousemove");
+            }
+        }, false);
+        elem.addEventListener("mouseup", function (evt) {
+            dragging = false;
+            console.log("mouseup");
+        });
+        /*
+        elem.addEventListener("click", function () {
+            console.log("click");
+        });
+        */
+    </script>
+
+</body>
+
+</html>
