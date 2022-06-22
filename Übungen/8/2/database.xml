@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<userData>
+    <user1>
+       <weight>79</weight>
+       <height>1.80</height>
+       <gender>Male</gender>
+       <name>Jon Meyer</name>
+       <email>jon.meyer@gmail.com</email>
+       <comment>his name is jon</comment>
+    </user1>
+    <user2>
+        <weight>60</weight>
+        <height>1.70</height>
+        <gender>Female</gender>
+        <name>Jennifer Jenkins</name>
+        <email>jennifer.jenkins@gmail.com</email>
+        <comment>her name is jennifer</comment>
+     </user2>
+     <user3>
+        <weight>87</weight>
+        <height>1.95</height>
+        <gender>Male</gender>
+        <name>Geralt von Riva</name>
+        <email>geralt.von.riva@gmail.com</email>
+        <comment>the one and only</comment>
+     </user3>
+</userData>

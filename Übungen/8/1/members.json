@@ -1,0 +1,22 @@
+[
+    {
+        "name":"Smith",
+        "vorname":"John",
+        "email":"foo@bar.com"
+    },
+    {
+        "name":"Doe",
+        "vorname":"Jane",
+        "email":"jane@doe.org"
+    },
+    {
+        "name":"Jimmy",
+        "vorname":"Jimmson",
+        "email":"jimmy.jimmson@verein.org"
+    },
+    {
+        "name":"Olaf",
+        "vorname":"Olafsons",
+        "email":"Olaf.Olafson@verein.org"
+    }
+]

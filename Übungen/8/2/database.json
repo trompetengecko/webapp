@@ -1,0 +1,26 @@
+[
+    {
+        "weight":"79",
+        "height":"1.80",
+        "gender":"Male",
+        "name":"Jon Meyer",
+        "email":"jon.meyer@gmail.com",
+        "comment":"his name is jon"
+    },
+    {
+        "weight":"60",
+        "height":"1.70",
+        "gender":"Female",
+        "name":"Jennifer Jenkins",
+        "email":"jennifer.jenkins@gmail.com",
+        "comment":"her name is jennifer"
+    },
+    {
+        "weight":"87",
+        "height":"1.95",
+        "gender":"Male",
+        "name":"Geralt von Riva",
+        "email":"geralt.von.riva@gmail.com",
+        "comment":"the one and only"
+    }
+]
