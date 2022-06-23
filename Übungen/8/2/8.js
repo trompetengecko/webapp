@@ -26,7 +26,9 @@ submitButton.addEventListener("click", function () {
         document.getElementById("BMI-Output").innerHTML = "Failure: Check RegExp";
     }
 }, false)
-/*
+
+
+//json Darstellung (nicht Aufgabenrelevant und nur eine Übung)
 fetch('database.json')
     .then(function (response) {
         return response.json();
@@ -55,10 +57,10 @@ function appendData(data) {
         console.log(i);
     }
 }
-*/
+//Ende der json Darstellung
+
 let ajaxBMI;
 document.getElementById("ajaxtBtn").addEventListener("click", function () {
-
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -67,9 +69,7 @@ document.getElementById("ajaxtBtn").addEventListener("click", function () {
         document.getElementById("BMI-Output").innerHTML = ajaxBMI;
         }
     }
-    xhttp.open("GET", "https://vulcan.informatik.hs-fulda.de/bmiRechnerAjax.php?gewicht=" + document.getElementById("weight").value + "&groesse=" + document.getElementById("height").value + ", true);
+    xhttp.open("GET", `https://vulcan.informatik.hs-fulda.de/bmiRechnerAjax.php?gewicht=${document.getElementById('weight').value}&groesse=${document.getElementById('height').value}`, true);
     xhttp.send();
-
-
 });
-//document.getElementById("userData").innerHTML +="hi";
+
