@@ -34,15 +34,15 @@ class Rechteck {
 let canvas = document.getElementById("mycanvas");
 let context = canvas.getContext("2d");
 
+let body = [[]];
+
 document.getElementById("mycanvas").addEventListener("click", function () { 
     let quadrat = new Rechteck(Math.floor(Math.random() * 200), Math.floor(Math.random() * 200), Math.floor(Math.random() * 200), Math.floor(Math.random() * 200), Math.floor(Math.random() * 200), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255));
     context.fillStyle = `rgb(${quadrat.getR()}, ${quadrat.getG()}, ${quadrat.getB()})`;
     context.fillRect(quadrat.getTop(), quadrat.getLeft(), quadrat.getWidth(), quadrat.getHeight());
-    /*
-    var body += [
-        [quadrat.getTop(), quadrat.getLeft(), quadrat.getWidth(), quadrat.getHeight(), quadrat.getR(), quadrat.getG(), quadrat.getB()]
-    ]
-    */
+    
+    body.push([quadrat.getTop(), quadrat.getLeft(), quadrat.getWidth(), quadrat.getHeight(), quadrat.getR(), quadrat.getG(), quadrat.getB()]);
+    
 });
 
 
