@@ -31,49 +31,15 @@ class Figur {
         return this._b;
     }
 
-    draw = function (top, left, width, height, red, green, blue) {
-        context.fillStyle = `rgb(${red}, ${green}, ${blue})`;
-        context.fillRect(top, left, width, height);
+    draw = function (context) {
+        context.fillStyle = `rgb(${this._r}, ${this._g}, ${this._b})`;
+        context.fillRect(this._top, this._left, this._width, this._height);
     }
 }
 
 class Rechteck extends Figur{
     constructor(top, left, width, height, red, green, blue) {
         super(top, left, width, height, red, green, blue);
-        this._top = top;
-        this._left = left;
-        this._width = width;
-        this._height = height;
-        this._r = red;
-        this._g = green;
-        this._b = blue;
-    }
-    //getter functions
-    getTop = function() {
-        return this._top;
-    }
-    getLeft = function() {
-        return this._left;
-    }
-    getWidth = function() {
-        return this._width;
-    }
-    getHeight = function() {
-        return this._height;
-    }
-    getR = function() {
-        return this._r;
-    }
-    getG = function() {
-        return this._g;
-    }
-    getB = function() {
-        return this._b;
-    }
-
-    draw = function (top, left, width, height, red, green, blue) {
-        context.fillStyle = `rgb(${red}, ${green}, ${blue})`;
-        context.fillRect(top, left, width, height);
     }
 }
 
@@ -82,47 +48,25 @@ class Kreis extends Figur{
         super(top, left, width, height, red, green, blue);
         this._top = top;
         this._left = left;
-        this._width = width;
+        this._radius = width;
         this._height = height;
         this._r = red;
         this._g = green;
         this._b = blue;
     }
-    //getter functions
-    getTop = function() {
-        return this._top;
-    }
-    getLeft = function() {
-        return this._left;
-    }
-    getWidth = function() {
-        return this._width;
-    }
-    getHeight = function() {
-        return this._height;
-    }
-    getR = function() {
-        return this._r;
-    }
-    getG = function() {
-        return this._g;
-    }
-    getB = function() {
-        return this._b;
-    }
 
-    draw = function (top, left, radius, heigth, red, green, blue) {
-        heigth = 0;
-        context.fillStyle = `rgb(${red}, ${green}, ${blue})`;
-        context.arc(top, left, radius, 0, 2 * Math.PI,true);
+    draw = function () {
+        context.fillStyle = `rgb(${this._r}, ${this._g}, ${this._b})`;
+        context.arc(this._top, this._left, this._width, 0, 2 * Math.PI,true);
         context.fill();
+        context = canvas.getContext("2d");
     }
 }
 
 let canvas = document.getElementById("mycanvas");
 let context = canvas.getContext("2d");
 
-let bodyArr = [[]];
+let bodyArr = [];
 
 document.getElementById("mycanvas").addEventListener("click", function () { 
     let randBody = Math.floor(Math.random() * 2); //0 = Rechteck; 1 = Kreis
@@ -152,12 +96,12 @@ document.getElementById("mycanvas").addEventListener("click", function () {
 
     if (randBody == 0) {
         let geometricBody = new Rechteck(mouseX, mouseY, yInverse * height, xInverse * width, red, green, blue); //height und width werden mit Inverse multipliziert (-1, 1) um die Richtung zu drehen.
-        geometricBody.draw(geometricBody.getTop(), geometricBody.getLeft(), geometricBody.getWidth(), geometricBody.getHeight(), geometricBody.getR(), geometricBody.getG(),geometricBody.getB());
-        bodyArr.push([geometricBody.getTop(), geometricBody.getLeft(), geometricBody.getWidth(), geometricBody.getHeight(), geometricBody.getR(), geometricBody.getG(), geometricBody.getB()]);
+        geometricBody.draw(context);
+        bodyArr.push(geometricBody);
     } else {
         let geometricBody = new Kreis(mouseX, mouseY, height, width, red, green, blue); //height und width werden mit Inverse multipliziert (-1, 1) um die Richtung zu drehen.
-        geometricBody.draw(geometricBody.getTop(), geometricBody.getLeft(), geometricBody.getWidth(), geometricBody.getHeight(), geometricBody.getR(), geometricBody.getG(),geometricBody.getB());
-        bodyArr.push([geometricBody.getTop(), geometricBody.getLeft(), geometricBody.getWidth(), geometricBody.getHeight(), geometricBody.getR(), geometricBody.getG(), geometricBody.getB()]);
+        geometricBody.draw(context);
+        bodyArr.push(geometricBody);
     }
 
 });
@@ -168,8 +112,7 @@ document.getElementById("cleanCanvas").addEventListener("click", function () {
 });
 
 document.getElementById("restoreCanvas").addEventListener("click", function () {
-    bodyArr.forEach(e => {
-        let geometricBody = new Rechteck();
-        geometricBody.draw(e[0], e[1], e[2], e[3], e[4], e[5], e[6])
+    bodyArr.forEach(figur => {
+        figur.draw(context)
     });
 });
