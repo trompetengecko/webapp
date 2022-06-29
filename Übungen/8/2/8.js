@@ -35,7 +35,6 @@ fetch('database.json')
     })
     .then(function (data) {
         appendData(data);
-        console.log("hi");
     })
     .catch(function (err) {
         console.log("json error");
@@ -59,12 +58,11 @@ function appendData(data) {
 }
 //Ende der json Darstellung
 
-let ajaxBMI;
 document.getElementById("ajaxtBtn").addEventListener("click", function () {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
         if (this.readyState == 4 && this.status == 200) {
-        ajaxBMI = this.responseText;
+        var ajaxBMI = this.responseText;
         console.log(ajaxBMI);
         document.getElementById("BMI-Output").innerHTML = ajaxBMI;
         }
